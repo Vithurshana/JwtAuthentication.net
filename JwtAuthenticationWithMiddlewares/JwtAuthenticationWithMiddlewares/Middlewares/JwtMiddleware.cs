@@ -67,6 +67,7 @@ namespace JwtAuthenticationWithMiddlewares.Middlewares
             {
                 "/api/user/createuser",
                 "/api/authenticate/authenticate",
+                "/api/listusers/listusers"
             };
 
             bool isEnableUnauthorizedRoute = false;

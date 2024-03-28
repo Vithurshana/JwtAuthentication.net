@@ -4,11 +4,14 @@ using JwtAuthenticationWithMiddlewares.Helpers.Utils;
 using JwtAuthenticationWithMiddlewares.Services.UserService;
 using JwtAuthenticationWithMiddlewares.Services.StoryService;
 using JwtAuthenticationWithMiddlewares.Services.AuthenticateService;
+using JwtAuthenticationWithMiddlewares.Services.ListUsersService;
 using JwtAuthenticationWithMiddlewares.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
 GlobalAttributes.mysqlConfiguration.connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddHttpClient();
 
 // Add services to the container.
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -20,6 +23,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IStoryService, StoryService>();
 builder.Services.AddScoped<IAutheticateService, AuthenticateService>();
+builder.Services.AddScoped<IListUsersService, ListUsersService>();
 
 
 builder.Services.AddControllers();
